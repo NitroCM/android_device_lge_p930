@@ -269,6 +269,17 @@ service mdm_script3 /system/bin/sh /system/etc/init.qcom.baseband.sh
     seclabel u:r:kickstart:s0
     oneshot
 
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+    class main
+    user root
+    disabled
+
+service thermald /system/bin/thermald
+    class main
+    user root
+    group root
+    disabled
+
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
@@ -327,6 +338,11 @@ service ppd /system/bin/mm-pp-daemon
 service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard0 /storage/sdcard0
     class late_start
     disabled
+
+service ami304d /system/bin/ami304d
+    class main
+    user compass
+    group system
 
 on property:dev.bootcomplete=1
     start mdm_script3

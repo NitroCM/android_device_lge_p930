@@ -1,0 +1,17 @@
+# Grant GPU access to system apps (e.g., PowerManagerService)
+#allow system gpu_device:chr_file rw_file_perms;
+allow system_server diag_device:chr_file rw_file_perms;
+
+# Grant access to Qualcomm MSM Interface (QMI) radio sockets to system apps
+# (e.g., LocationManager)
+allow system_server qmux_radio_socket:sock_file create_file_perms;
+allow system_server qmux_radio_socket:dir rw_dir_perms;
+
+# Grant CMHardwareService access to keypad_enable
+allow system_server sysfs_writable:file rw_file_perms;
+
+# Grant Binder access to sensor devices
+allow system_server sensor_device:chr_file rw_file_perms;
+
+#XXX allow system oncrpc_device:dir r_dir_perms;
+#XXX allow system oncrpc_device:chr_file rw_file_perms;

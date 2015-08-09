@@ -18,7 +18,7 @@ TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 TARGET_PREBUILT_KERNEL := device/lge/p930/kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=iprj vmalloc=580M lpj=67667 msm_rtb.filter=0x0
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=iprj vmalloc=580M lpj=67667 msm_rtb.filter=0x0 androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x40200000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01800000
@@ -29,10 +29,12 @@ TARGET_BOARD_PLATFORM_GPU := qcom-adreno200
 TARGET_KERNEL_CONFIG := miro_jbskt_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/iproj
 TARGET_SPECIFIC_HEADER_PATH := device/lge/p930/include
+### TEMPORARY ### kernel with gcc-4.8 does not boot ###
+KERNEL_TOOLCHAIN := $(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-4.7/bin
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x01400000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x01400000
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 880803840
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 527433728
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2004621312
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_NO_SELECT_BUTTON := true
@@ -104,8 +106,6 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 BOARD_VENDOR_QCOM_GPS_LOC_API_AMSS_VERSION := 50000
 
 # Audio & Video
-TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf
 BOARD_USES_LEGACY_ALSA_AUDIO := true
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 BOARD_QCOM_VOIP_ENABLED := true
@@ -131,11 +131,15 @@ TARGET_PROVIDES_LIBLIGHT := true
 TARGET_BOOTANIMATION_USE_RGB565 := true
 TARGET_BOOTANIMATION_PRELOAD := true
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
-BOARD_PROVIDES_LIBRIL := true
+#BOARD_PROVIDES_LIBRIL := true
 BOARD_RIL_FIVE_SEARCH_RESPONSES := true
+BOARD_RIL_CLASS := ../../../device/lge/p930/ril/
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.iprj
 #QCOM_OPEN_SOURCE := true
 #WITH_QC_PERF := true
+
+# Most of our binary blobs aren't PIE unfortunately
+TARGET_NEEDS_NON_PIE_SUPPORT := true
 
 # Vendor Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
@@ -155,13 +159,20 @@ BOARD_SEPOLICY_UNION += \
 	file.te \
 	file_contexts \
 	hci_init.te \
-	init_hell.te \
+	init.te \
+	init_shell.te \
 	keystore.te \
 	mediaserver.te \
+	netd.te \
+	netmgrd.te \
 	kickstart.te \
+	qmiproxy.te \
+	qmuxd.te \
+	qrngd.te \
 	rild.te \
+	rmt_storage.te \
 	surfaceflinger.te \
-	system.te \
+	system_server.te \
 	ueventd.te \
 	wpa.te
 

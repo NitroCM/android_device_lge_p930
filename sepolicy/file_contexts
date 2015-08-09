@@ -1,5 +1,6 @@
 # GPU device
 /dev/kgsl-3d0       u:object_r:gpu_device:s0
+/dev/kgsl-2d(.*)    u:object_r:gpu_device:s0
 /dev/msm_rotator    u:object_r:gpu_device:s0
 
 # Qualcomm Secure Execution Environment Communicator (QSEECOM) device
@@ -16,9 +17,23 @@
 /dev/media([0-9])+                 u:object_r:camera_device:s0
 /dev/smd([0-9])+                   u:object_r:smd_device:s0
 /dev/mdm                           u:object_r:radio_device:s0
+/dev/ami306hal                     u:object_r:sensor_device:s0
+/dev/k3dh_acc_misc                 u:object_r:sensor_device:s0
+/dev/k3g_misc                      u:object_r:sensor_device:s0
+/dev/ttyHS0                        u:object_r:bluetooth_device:s0
 
 # Qualcomm MSM Audio ACDB device
 /dev/msm_acdb       u:object_r:msm_acdb_device:s0
+
+# Qualcomm MSM Audio PCM devices
+/dev/msm_pcm_in                    u:object_r:msm_pcm_device:s0
+/dev/msm_pcm_out                   u:object_r:msm_pcm_device:s0
+
+# Qualcomm MSM vidc devices
+/dev/msm_vidc_enc                  u:object_r:msm_vidc_device:s0
+/dev/msm_vidc_dec                  u:object_r:msm_vidc_device:s0
+/dev/msm_wma                       u:object_r:msm_vidc_device:s0
+/dev/msm_wmapro                    u:object_r:msm_vidc_device:s0
 
 /dev/ks_hsic_bridge                u:object_r:kickstart_device:s0
 /dev/efs_hsic_bridge               u:object_r:kickstart_device:s0
@@ -26,6 +41,12 @@
 /system/bin/qcks                   u:object_r:kickstart_exec:s0
 /system/bin/efsks                  u:object_r:kickstart_exec:s0
 /system/bin/ks                     u:object_r:kickstart_exec:s0
+
+/system/bin/netmgrd                u:object_r:netmgrd_exec:s0
+/system/bin/qmiproxy               u:object_r:qmiproxy_exec:s0
+/system/bin/qmuxd                  u:object_r:qmuxd_exec:s0
+/system/bin/qrngd                  u:object_r:qrngd_exec:s0
+/system/bin/rmt_storage            u:object_r:rmt_storage_exec:s0
 
 /data/nfc(/.*)?                    u:object_r:nfc_data_file:s0
 

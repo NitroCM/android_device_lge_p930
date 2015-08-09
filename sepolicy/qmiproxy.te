@@ -1,0 +1,3 @@
+type qmiproxy, domain;
+type qmiproxy_exec, exec_type, file_type;
+init_daemon_domain(qmiproxy)

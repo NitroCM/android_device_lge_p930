@@ -112,6 +112,9 @@ PRODUCT_PACKAGES += \
     libhealthd.iprj \
     libinit_msm \
     com.android.future.usb.accessory \
+    wpa_supplicant \
+    hostapd \
+    dhcpcd.conf
 
 #GPS todo
 PRODUCT_PACKAGES += \
@@ -155,7 +158,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     Torch \
-    NitroParts
+#    NitroParts
 
 # Charger mode
 PRODUCT_PACKAGES += \
@@ -169,13 +172,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/system/lib/libril-qc-qmi-1.so \
     ro.vendor.extension_library=/system/lib/libqc-opt.so \
     DEVICE_PROVISIONED=1 \
-    ro.telephony.ril_class=LGEQualcommUiccRIL \
+    ro.telephony.ril_class=LgeLteRIL \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=120 \
     debug.sf.hw=1 \
     debug.egl.hw=1 \
     debug.composition.type=dyn \
-    persist.sys.usb.config=mtp,adb \
+    persist.sys.usb.config=mtp \
     ro.opengles.version=131072 \
     com.qc.hardware=true \
     ro.bt.bdaddr_path=/data/misc/bd_addr \
@@ -185,15 +188,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     debug.mdpcomp.logs=0 \
     debug.hwc.dynThreshold=1.9 \
 
-ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.adb.secure=0 \
-    ro.secure=0 \
-    ro.allow.mock.location=0 \
-    ro.debuggable=1 \
-    persist.sys.usb.config=adb \
-    persist.sys.root_access=3
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_BRAND := LG
 PRODUCT_NAME := full_p930

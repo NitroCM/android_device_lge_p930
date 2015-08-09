@@ -28,11 +28,6 @@
 
     <bool name="config_automatic_brightness_available">true</bool>
 
-    <!-- Device supports LED flashlight -->
-    <bool name="config_enableTorch">true</bool>
-
-    <bool name="config_forceDisableHardwareKeyboard">true</bool>
-
     <!-- Performance profiles -->
     <string name="config_perf_profile_prop">sys.perf.profile</string>
     <string name="config_perf_profile_default_entry">1</string>

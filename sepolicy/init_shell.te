@@ -4,3 +4,6 @@ allow init_shell bluetooth_prop:property_service set;
 allow init_shell smd_device:chr_file rw_file_perms;
 allow init_shell unlabeled:file r_file_perms;
 allow init_shell init:fifo_file r_file_perms;
+allow init_shell default_prop:property_service { set };
+allow init_shell ctl_default_prop:property_service { set };
+allow init_shell ctl_rildaemon_prop:property_service { set };
