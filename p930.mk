@@ -41,7 +41,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/vold.fstab:system/etc/vold.fstab \
     $(LOCAL_PATH)/config/thermald.conf:system/etc/thermald.conf \
     $(LOCAL_PATH)/config/audio_policy.conf:system/vendor/etc/audio_policy.conf \
-    $(LOCAL_PATH)/config/hosts:system/etc/hosts \
     $(LOCAL_PATH)/config/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     $(LOCAL_PATH)/config/bcmdhd.cal:system/etc/wifi/bcmdhd.cal \
     $(LOCAL_PATH)/config/qosmgr_rules.xml:system/etc/qosmgr_rules.xml \
