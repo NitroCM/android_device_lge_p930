@@ -137,6 +137,7 @@ BOARD_RIL_CLASS := ../../../device/lge/p930/ril/
 BOARD_HAL_STATIC_LIBRARIES := libhealthd.iprj
 #QCOM_OPEN_SOURCE := true
 #WITH_QC_PERF := true
+TARGET_USES_LOGD := false
 
 # Pre-lollipop blob support
 BOARD_USES_LEGACY_MMAP := true
